@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Build - Asciibook Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="default.css" />
+    <link rel="stylesheet" href="highlight.css" />
+    <link rel="stylesheet" href="html.css" />
+    <script src="html.js" defer></script>
+  </head>
+  <body>
+    <div class="toolbar">
+      <div class="toolbar-title">
+        <a href="index.html">
+          Asciibook Document
+        </a>
+      </div>
+      <div class="toolbar-action">
+        <div class="dropdown">
+          <button id="drawer-button" type="button" class="dropdown-toggle button button-icon">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div id="toolbar-toc" class="dropdown-menu">
+            
+              <ol>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_table_of_contents.html">Table of Contents</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_introduction.html">Introduction</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_about_asciidoc">About AsciiDoc</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_difference_between_asciibook_and_asciidoctor">Difference between Asciibook and Asciidoctor</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_e_book_formats">E-book Formats</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_version_control">Version Control</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_cicd">CI/CD</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_open_source">Open Source</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_installation.html">Installation</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_installation.html#_docker_image">Docker Image</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_installation.html#_container_environment">Container Environment</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_build.html">Build</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_build.html#_command_line_usage">Command Line Usage</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_build.html#_configuration">Configuration</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_style.html">Style</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_style.html#_theme">Theme</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_style.html#_template">Template</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_automation.html">Automation</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_automation.html#_github_actions">GitHub Actions</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+              </ol>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="content">
+        <section class="section" id="_build">
+  <h1>Build</h1>
+  <section class="section" id="_command_line_usage">
+  <h2>Command Line Usage</h2>
+  <p >Asciibook provides a <code>asciibook</code> program with several commands.</p>
+
+<section class="section" id="_build_2">
+  <h3><code>build</code></h3>
+  <p >Performs a one off build your book to <code>./build</code> (by default).</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code>$ asciibook build mybook.adoc</code></pre>
+</figure>
+
+<p >To change Asciibook’s default build behavior have a look through the <a class="xref" href="_build.html#_configuration">Configuration</a>.</p>
+
+</section>
+
+<section class="section" id="_init">
+  <h3><code>init</code></h3>
+  <p >Create a config file <code>asciibook.yml</code> for exist AsciiDoc file.</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code>$ asciibook init mybook.adoc</code></pre>
+</figure>
+
+<p >If current directory have config file, you can run build command this way:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code>$ asciibook build</code></pre>
+</figure>
+
+<p >It will read source file and configuration in <code>asciibook.yml</code>.</p>
+
+</section>
+
+<section class="section" id="_new">
+  <h3><code>new</code></h3>
+  <p >Create a new Asciibook scaffold.</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code>$ asciibook new mybook</code></pre>
+</figure>
+
+</section>
+
+<section class="section" id="_help">
+  <h3><code>help</code></h3>
+  <p >Show help for Asciibook.</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code>$ asciibook help</code></pre>
+</figure>
+
+</section>
+
+</section>
+
+<section class="section" id="_configuration">
+  <h2>Configuration</h2>
+  <p >The build configuration can be specified in a command or written to configuration file <code>asciibook.yml</code>.</p>
+
+<table class="table" >
+  
+  
+    <thead>
+      
+        <tr>
+          
+            <th 
+                >Setting</th>
+          
+            <th 
+                >Command Line</th>
+          
+            <th 
+                >Config file</th>
+          
+        </tr>
+      
+    </thead>
+  
+  
+    <tbody>
+      
+        <tr>
+          
+            <td 
+                >
+
+<p ><strong>Build Source </strong></p>
+
+<p >Build source document.</p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>build SOURCE</code></p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>source: SOURCE</code></p>
+
+</td>
+          
+        </tr>
+      
+        <tr>
+          
+            <td 
+                >
+
+<p ><strong>Formats</strong></p>
+
+<p >What format needs to be generated.</p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>--formats html,pdf&#8230;&#8203;</code></p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>formats: [html, pdf&#8230;&#8203;]</code></p>
+
+</td>
+          
+        </tr>
+      
+        <tr>
+          
+            <td 
+                >
+
+<p ><strong>Destination Dir</strong></p>
+
+<p >Change the directory of the build output.</p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>--dest-dir DIR</code></p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>dest_dir: DIR</code></p>
+
+</td>
+          
+        </tr>
+      
+        <tr>
+          
+            <td 
+                >
+
+<p ><strong>Theme Dir</strong></p>
+
+<p >The directory where the theme is stored.</p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>--theme-dir DIR</code></p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>theme_dir: DIR</code></p>
+
+</td>
+          
+        </tr>
+      
+        <tr>
+          
+            <td 
+                >
+
+<p ><strong>Template Dir</strong></p>
+
+<p >The directory where the template is stored.</p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>--template-dir DIR</code></p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>template_dir: DIR</code></p>
+
+</td>
+          
+        </tr>
+      
+        <tr>
+          
+            <td 
+                >
+
+<p ><strong>Page Level</strong></p>
+
+<p >What level of chapters are on a separate page.</p>
+
+<p >0 means the entire document is one page, default is 1.</p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>--page-level NUM</code></p>
+
+</td>
+          
+            <td 
+                >
+
+<p ><code>page_level: NUM</code></p>
+
+</td>
+          
+        </tr>
+      
+    </tbody>
+  
+  
+</table>
+
+</section>
+
+</section>
+
+      </div>
+      <div class="paginator">
+        <a href="_installation.html" class="paginator-prev ">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <a href="_style.html" class="paginator-next ">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

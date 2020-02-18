@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Style - Asciibook Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="default.css" />
+    <link rel="stylesheet" href="highlight.css" />
+    <link rel="stylesheet" href="html.css" />
+    <script src="html.js" defer></script>
+  </head>
+  <body>
+    <div class="toolbar">
+      <div class="toolbar-title">
+        <a href="index.html">
+          Asciibook Document
+        </a>
+      </div>
+      <div class="toolbar-action">
+        <div class="dropdown">
+          <button id="drawer-button" type="button" class="dropdown-toggle button button-icon">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div id="toolbar-toc" class="dropdown-menu">
+            
+              <ol>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_table_of_contents.html">Table of Contents</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_introduction.html">Introduction</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_about_asciidoc">About AsciiDoc</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_difference_between_asciibook_and_asciidoctor">Difference between Asciibook and Asciidoctor</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_e_book_formats">E-book Formats</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_version_control">Version Control</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_cicd">CI/CD</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_open_source">Open Source</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_installation.html">Installation</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_installation.html#_docker_image">Docker Image</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_installation.html#_container_environment">Container Environment</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_build.html">Build</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_build.html#_command_line_usage">Command Line Usage</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_build.html#_configuration">Configuration</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_style.html">Style</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_style.html#_theme">Theme</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_style.html#_template">Template</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_automation.html">Automation</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_automation.html#_github_actions">GitHub Actions</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+              </ol>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="content">
+        <section class="section" id="_style">
+  <h1>Style</h1>
+  <p >Asciibook provides two levels of ways to customize ebook styles:</p>
+
+<dl class="dlist" ><dt>Theme</dt><dd>Define the layout and style of the book by HTML/CSS/JavaScript.</dd><dt>Template</dt><dd>Defines how AsciiDoc elements are converted to HTML.</dd></dl>
+
+<p >Asciibook has built-in themes and templates. If you need to modify the themes and templates, copying the built-in themes and templates is a good start.</p>
+
+<div class="admonition admonition-note" >
+  <div class="admonition-icon">
+  </div>
+  <div class="admonition-content">
+    
+    <p >You can download theme and template dir from Asciibook GitHub Repo: <a class="link" href="https://github.com/asciibook/asciibook"
+     
+      >https://github.com/asciibook/asciibook</a> .</p>
+
+<p >Asciibook will add command to export built-in theme and template in the future.</p>
+
+  </div>
+</div>
+
+<section class="section" id="_theme">
+  <h2>Theme</h2>
+  <p >Use <code>--theme-dir DIR</code> or <code>theme_dir: DIR</code> to specify theme dir. When specify theme dir, it will overwrite the built-in theme, so it should have completed theme structure.</p>
+
+<p >The directory structure of theme is as follows (only show required files):</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code>theme/
+├── epub
+│   └── layout.html
+├── html
+│   └── layout.html
+├── mobi
+│   └── layout.html
+├── pdf
+│   ├── config.yml
+│   ├── footer.html
+│   ├── header.html
+│   ├── layout.html
+│   └── toc.xsl
+└── share</code></pre>
+</figure>
+
+<p >Each format has its own directory and <code>layout.html</code> file, and a <code>share</code> directory.</p>
+
+<p ><code>layout.html</code> content looks like this:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>{{ book.title }}<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    {{ page.content }}
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
+
+<p >You can add elements, and add CSS/JavaScript link in <code>layout.html</code>, for exmaple, add this lines in <code>layout.html</code> file&#8217;s <code>&lt;head&gt;</code>:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"style.css"</span><span class="nt">&gt;</span></code></pre>
+</figure>
+
+<p >And puts assets in format&#8217;s directory:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code>theme/
+├── html
+    ├── style.css
+    └── layout.html</code></pre>
+</figure>
+
+<p >Assets will by copy to destination directory in build time.</p>
+
+<p >You can also put assets in <code>share</code> directory, then it can be link by all formats.</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code>theme/
+└── share
+    └── default.css</code></pre>
+</figure>
+
+<section class="section" id="_pdf_specific_content">
+  <h3>PDF Specific Content</h3>
+  <p >PDF is complex than other formats:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code>├── pdf
+│   ├── config.yml
+│   ├── footer.html
+│   ├── header.html
+│   ├── layout.html
+│   └── toc.xsl</code></pre>
+</figure>
+
+<p >This is because of PDF has more processing steps: calculate page numbers, generate headers and footers, and generate table of contents with page numbers. They are not in the same process as rendering the page.</p>
+
+<p >The role of these files is as follows:</p>
+
+<dl class="dlist" ><dt>config.yml</dt><dd>Define PDF page margin.</dd><dt>header.html</dt><dd>Page header content, page number, page title, etc.</dd><dt>footer.html</dt><dd>Page footer content, like header.</dd><dt>toc.xsl</dt><dd>Table of contents template for <code>wkhtmltopdf</code>, which actually print PDFs.</dd></dl>
+
+<p >It is recommended to copy the built-in template for modification.</p>
+
+<div class="admonition admonition-note" >
+  <div class="admonition-icon">
+  </div>
+  <div class="admonition-content">
+    
+    <p >To use PDF TOC, you need to add a special sections:</p>
+
+<figure class="listing" >
+  
+  <pre>[toc]
+== Table of Contents</pre>
+</figure>
+
+<p >It will be replaced by real TOC in build time.</p>
+
+  </div>
+</div>
+
+</section>
+
+<section class="section" id="_epubmobi_specific_content">
+  <h3>EPUB/MOBI Specific Content</h3>
+  <p >According to EPUB specification, EPUB content should be store as XHTML, so <code>layout.html</code> should use XHTML markup. Compare to HTML, XHTML has stricter formatting requirements, such as closing tags, namespace declarations.</p>
+
+<p >MOBI is convert from EPUB, it follows the same requirements, but can have own layout and style.</p>
+
+</section>
+
+</section>
+
+<section class="section" id="_template">
+  <h2>Template</h2>
+  <p >Use <code>--template-dir DIR</code> or <code>template_dir: DIR</code> to specify template dir. Unlike theme dir, you can provide partial templates, and unspecified templates will use the default templates.</p>
+
+<p >The directory structure of template is as follows:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code>templates/
+├── admonition.html
+├── audio.html
+├── colist.html
+├── dlist.html
+├── document.html
+├── embedded.html
+...</code></pre>
+</figure>
+
+<p >Each template corresponds to an AsciiDoc element, you can find all templates in <a class="link" href="https://github.com/asciibook/asciibook/tree/master/templates"
+     
+      >https://github.com/asciibook/asciibook/tree/master/templates</a> .</p>
+
+<p >With template, you have complete control over the output of the element. For example, create a template named <code>paragraph.html</code> with this content:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code data-lang="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"custom"</span><span class="nt">&gt;</span>{{ node.content }}<span class="nt">&lt;/p&gt;</span></code></pre>
+</figure>
+
+<p >Then all paragraph element will have a <code>custom</code> class.</p>
+
+</section>
+
+</section>
+
+      </div>
+      <div class="paginator">
+        <a href="_build.html" class="paginator-prev ">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <a href="_automation.html" class="paginator-next ">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

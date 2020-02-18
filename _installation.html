@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Installation - Asciibook Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="default.css" />
+    <link rel="stylesheet" href="highlight.css" />
+    <link rel="stylesheet" href="html.css" />
+    <script src="html.js" defer></script>
+  </head>
+  <body>
+    <div class="toolbar">
+      <div class="toolbar-title">
+        <a href="index.html">
+          Asciibook Document
+        </a>
+      </div>
+      <div class="toolbar-action">
+        <div class="dropdown">
+          <button id="drawer-button" type="button" class="dropdown-toggle button button-icon">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div id="toolbar-toc" class="dropdown-menu">
+            
+              <ol>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_table_of_contents.html">Table of Contents</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_introduction.html">Introduction</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_about_asciidoc">About AsciiDoc</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_difference_between_asciibook_and_asciidoctor">Difference between Asciibook and Asciidoctor</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_e_book_formats">E-book Formats</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_version_control">Version Control</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_cicd">CI/CD</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_open_source">Open Source</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_installation.html">Installation</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_installation.html#_docker_image">Docker Image</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_installation.html#_container_environment">Container Environment</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_build.html">Build</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_build.html#_command_line_usage">Command Line Usage</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_build.html#_configuration">Configuration</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_style.html">Style</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_style.html#_theme">Theme</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_style.html#_template">Template</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_automation.html">Automation</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_automation.html#_github_actions">GitHub Actions</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+              </ol>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="content">
+        <section class="section" id="_installation">
+  <h1>Installation</h1>
+  <p >Asciibook uses docker as a distribution tool. Docker can package dependencies, keep workspace clean, and easy to integrate with CI/CD.</p>
+
+<p >If you don&#8217;t have docker installed, go to <a class="link" href="https://www.docker.com/products/docker-desktop"
+     
+      >https://www.docker.com/products/docker-desktop</a> download and install docker.</p>
+
+<section class="section" id="_docker_image">
+  <h2>Docker Image</h2>
+  <p >Use this command to pull Asciibook image:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span>docker pull asciibook/asciibook</code></pre>
+</figure>
+
+<p >By default, docker pull the latest image. You can also specify the mirror version by tag:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span>docker pull asciibook/asciibook:0.0.2</code></pre>
+</figure>
+
+<p >Visit <a class="link" href="https://hub.docker.com/r/asciibook/asciibook"
+     
+      >https://hub.docker.com/r/asciibook/asciibook</a> for more infomation about available versions.</p>
+
+</section>
+
+<section class="section" id="_container_environment">
+  <h2>Container Environment</h2>
+  <p >Use this command to enter container environment in your workspace directory:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code data-lang="console"><span class="gp">~ $</span><span class="w"> </span><span class="nb">cd </span>workspace
+<span class="gp">workspace $</span><span class="w"> </span>docker run <span class="nt">-it</span> <span class="nt">-v</span> <span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span>:/asciibook asciibook/asciibook bash</code></pre>
+</figure>
+
+<p >It will start bash shell in container enviroment, and the <code>/asciibook</code> directory in container will sync with <code>workspace</code> directory in host. Next we will execute the Asciibook command inside the container environment.</p>
+
+<p >Check the current Asciibook version:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span>asciibook <span class="nt">--version</span>
+<span class="go">asciibook 0.0.2</span></code></pre>
+</figure>
+
+<p >If you see version information, then Asciibook is installed.</p>
+
+</section>
+
+</section>
+
+      </div>
+      <div class="paginator">
+        <a href="_introduction.html" class="paginator-prev ">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <a href="_build.html" class="paginator-next ">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

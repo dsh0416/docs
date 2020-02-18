@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Automation - Asciibook Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="default.css" />
+    <link rel="stylesheet" href="highlight.css" />
+    <link rel="stylesheet" href="html.css" />
+    <script src="html.js" defer></script>
+  </head>
+  <body>
+    <div class="toolbar">
+      <div class="toolbar-title">
+        <a href="index.html">
+          Asciibook Document
+        </a>
+      </div>
+      <div class="toolbar-action">
+        <div class="dropdown">
+          <button id="drawer-button" type="button" class="dropdown-toggle button button-icon">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div id="toolbar-toc" class="dropdown-menu">
+            
+              <ol>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_table_of_contents.html">Table of Contents</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_introduction.html">Introduction</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_about_asciidoc">About AsciiDoc</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_difference_between_asciibook_and_asciidoctor">Difference between Asciibook and Asciidoctor</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_e_book_formats">E-book Formats</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_version_control">Version Control</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_cicd">CI/CD</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_introduction.html#_open_source">Open Source</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_installation.html">Installation</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_installation.html#_docker_image">Docker Image</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_installation.html#_container_environment">Container Environment</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_build.html">Build</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_build.html#_command_line_usage">Command Line Usage</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_build.html#_configuration">Configuration</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_style.html">Style</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_style.html#_theme">Theme</a>
+                          </li>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_style.html#_template">Template</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="dropdown-menu-item" href="_automation.html">Automation</a>
+                    
+                      <ol>
+                        
+                          <li>
+                            <a class="dropdown-menu-item" href="_automation.html#_github_actions">GitHub Actions</a>
+                          </li>
+                        
+                      </ol>
+                    
+                  </li>
+                
+              </ol>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="content">
+        <section class="section" id="_automation">
+  <h1>Automation</h1>
+  <p >The best way to use Asciibook is used on CI/CD system. Any CI/CD service that supports docker can use Asciibook.</p>
+
+<p >This chapter shows how to configure different CI/CD systems.</p>
+
+<section class="section" id="_github_actions">
+  <h2>GitHub Actions</h2>
+  <p >GitHub Actions is the official CI/CD service on GitHub. It&#8217;s free for open source project and charge by running time for private project.</p>
+
+<p >Create file <code>.github/workflows/asciibook.yml</code> in your repo with this content:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s">Asciibook</span>
+
+<span class="na">on</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">push</span><span class="pi">,</span> <span class="nv">pull_request</span><span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-18.04</span>
+    <span class="na">container</span><span class="pi">:</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s">asciibook/asciibook</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">build book</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">asciibook build mybook.adoc</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/upload-artifact@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">build</span>
+          <span class="na">path</span><span class="pi">:</span> <span class="s">build</span></code></pre>
+</figure>
+
+<p >It means when push or pull request on this repo, create a job to run <code>asciibook build mybook.adoc</code>, and upload the <code>build</code> directory to workflow artifact, then you can download the build tarball from workflow status page.</p>
+
+<p >If you want to pubilsh HTML result to GitHub pages, add the following content under <code>jobs</code>:</p>
+
+<figure class="listing" >
+  
+  <pre class="rouge highlight"><code data-lang="yaml">  <span class="na">publish</span><span class="pi">:</span>
+    <span class="na">needs</span><span class="pi">:</span> <span class="s">build</span>
+    <span class="na">if</span><span class="pi">:</span> <span class="s">github.event_name == 'push' &amp;&amp; github.ref == 'refs/heads/master'</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-18.04</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/download-artifact@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">build</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Publish to Github Pages</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">cd build/html</span>
+          <span class="s">touch .nojekyll</span>
+          <span class="s">git init</span>
+          <span class="s">git config user.name "${GITHUB_ACTOR}"</span>
+          <span class="s">git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"</span>
+          <span class="s">git add .</span>
+          <span class="s">git commit -m 'asciibook build'</span>
+          <span class="s">git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git master:gh-pages</span>
+          <span class="s">rm -fr .git</span>
+          <span class="s">cd ../..</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">GITHUB_TOKEN</span><span class="pi">:</span> <span class="s">${{secrets.GITHUB_TOKEN}}</span></code></pre>
+</figure>
+
+<p >It means when push to master branch, create a job to push HTML result to <code>gh-pages</code> branch.</p>
+
+<p >GitHub pages needs to be triggered manually in first time, go to settings page of project, select source from gh-pages branch, and select a theme to trigger publish.</p>
+
+<figure class="image" >
+  
+    <img src="images/github-pages.png"
+         alt="GitHub Pages"
+         
+          />
+  
+  
+</figure>
+
+<p >Then push something to master branch to trigger GitHub Actions build, your pages will be publish later.</p>
+
+<div class="admonition admonition-note" >
+  <div class="admonition-icon">
+  </div>
+  <div class="admonition-content">
+    
+    <p >This book is a live sample for GitHub Actions with Asciibook, checkout source code for details: <a class="link" href="https://github.com/asciibook/docs"
+     
+      >https://github.com/asciibook/docs</a> .</p>
+
+  </div>
+</div>
+
+</section>
+
+</section>
+
+      </div>
+      <div class="paginator">
+        <a href="_style.html" class="paginator-prev ">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <a href="" class="paginator-next  disabled ">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
